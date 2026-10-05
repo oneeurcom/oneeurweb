@@ -110,15 +110,12 @@ volumes:
     <div class="wrap">
       <span class="eyebrow">Settings</span>
       <h2>Environment variables.</h2>
-      <div class="card tablewrap" style="padding-top:12px">
-        <table class="vars">
-          <tr><th>Variable</th><th>Default</th><th>What it does</th></tr>
-          <tr><td><code>ONEEUR_HOLDER_NAME</code></td><td>required</td><td>The holder&rsquo;s name in the network.</td></tr>
-          <tr><td><code>ONEEUR_PROXY_URL</code></td><td><code>wss://gateway.oneeur.com/holder/socket</code></td><td>Where the holder connects.</td></tr>
-          <tr><td><code>ONEEUR_STATUS_PASSWORD</code></td><td>none</td><td>Password for the status page (user <code>oneeur</code>).</td></tr>
-          <tr><td><code>ONEEUR_STATUS_PORT</code></td><td><code>4100</code></td><td>Status page port inside the container. <code>0</code> turns it off (and the health check then fails).</td></tr>
-        </table>
-      </div>
+      <dl class="rows">
+        <div><dt><code>ONEEUR_HOLDER_NAME</code></dt><dd>The holder&rsquo;s name in the network.<span class="default">Required</span></dd></div>
+        <div><dt><code>ONEEUR_PROXY_URL</code></dt><dd>Where the holder connects.<span class="default">Default: <code>wss://gateway.oneeur.com/holder/socket</code></span></dd></div>
+        <div><dt><code>ONEEUR_STATUS_PASSWORD</code></dt><dd>Password for the status page (user <code>oneeur</code>).<span class="default">Default: none</span></dd></div>
+        <div><dt><code>ONEEUR_STATUS_PORT</code></dt><dd>Status page port inside the container. <code>0</code> turns it off (and the health check then fails).<span class="default">Default: <code>4100</code></span></dd></div>
+      </dl>
     </div>
   </section>
 

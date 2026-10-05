@@ -46,11 +46,9 @@
       <span class="eyebrow">A payment</span>
       <h2>Two blocks, two chains.</h2>
       <ol class="flow">
-      <ol class="flow">
         <li class="card"><span class="num">01</span><h3>Send</h3><p>A signs a <code>send</code> block on their own chain. Their balance goes down and the money is now pending for B.</p></li>
         <li class="card"><span class="num">02</span><h3>Confirm</h3><p>The primary chain holder checks the signature and balance and adds the block. It handles one block at a time, so if the same money is spent twice, only the first spend goes through.</p></li>
         <li class="card"><span class="num">03</span><h3>Receive</h3><p>B signs an <code>open</code> or <code>receive</code> block on their chain that points to A&rsquo;s send. B&rsquo;s balance goes up. No other chain changes.</p></li>
-      </ol>
       </ol>
       <div class="stack" style="border-top:0">
         <article class="card"><h3>Nobody else waits</h3><p>A payment from A to B changes only A&rsquo;s chain and B&rsquo;s chain. Every other wallet&rsquo;s chain stays as it is, so payments between other people never queue behind yours.</p></article>
@@ -139,20 +137,17 @@ signature = Ed25519(wallet key, hash)</code></pre>
     <div class="wrap">
       <span class="eyebrow">Rules</span>
       <h2>Why a block can be refused.</h2>
-      <div class="card tablewrap" style="padding-top:12px">
-        <table class="vars">
-          <tr><th>Reason</th><th>What it means</th></tr>
-          <tr><td><code>bad_signature</code></td><td>The signature does not match the block and the wallet&rsquo;s key. Any changed field causes this.</td></tr>
-          <tr><td><code>bad_balance</code></td><td>The new balance does not add up, or a send is for more than the wallet has.</td></tr>
-          <tr><td><code>fork</code></td><td>Another block already follows the same previous block. This is what stops a double spend.</td></tr>
-          <tr><td><code>bad_previous</code>, <code>gap</code></td><td>The block does not point to the wallet&rsquo;s latest block, or skips a height.</td></tr>
-          <tr><td><code>unknown_send</code></td><td>A receive points to a send that does not exist or is not for this wallet.</td></tr>
-          <tr><td><code>already_exists</code></td><td>The send was already received, or the block was already added.</td></tr>
-          <tr><td><code>memo_mismatch</code></td><td>A receive must repeat the sender&rsquo;s memo exactly, so both chains hold the same signed memo.</td></tr>
-          <tr><td><code>self_send</code></td><td>A wallet cannot pay itself.</td></tr>
-          <tr><td><code>unsupported_algorithm</code></td><td>The block uses a signature algorithm that is not switched on.</td></tr>
-        </table>
-      </div>
+      <dl class="rows">
+        <div><dt><code>bad_signature</code></dt><dd>The signature does not match the block and the wallet&rsquo;s key. Any changed field causes this.</dd></div>
+        <div><dt><code>bad_balance</code></dt><dd>The new balance does not add up, or a send is for more than the wallet has.</dd></div>
+        <div><dt><code>fork</code></dt><dd>Another block already follows the same previous block. This is what stops a double spend.</dd></div>
+        <div><dt><code>bad_previous</code>, <code>gap</code></dt><dd>The block does not point to the wallet&rsquo;s latest block, or skips a height.</dd></div>
+        <div><dt><code>unknown_send</code></dt><dd>A receive points to a send that does not exist or is not for this wallet.</dd></div>
+        <div><dt><code>already_exists</code></dt><dd>The send was already received, or the block was already added.</dd></div>
+        <div><dt><code>memo_mismatch</code></dt><dd>A receive must repeat the sender&rsquo;s memo exactly, so both chains hold the same signed memo.</dd></div>
+        <div><dt><code>self_send</code></dt><dd>A wallet cannot pay itself.</dd></div>
+        <div><dt><code>unsupported_algorithm</code></dt><dd>The block uses a signature algorithm that is not switched on.</dd></div>
+      </dl>
     </div>
   </section>
 
