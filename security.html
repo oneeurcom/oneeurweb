@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security — OneEur</title>
+<meta name="description" content="How OneEur keeps wallets and payments safe: Ed25519 and SHA-256, a PIN-encrypted key that never leaves your phone, and authenticated chain holders.">
+<meta property="og:title" content="Security — OneEur">
+<meta property="og:description" content="How OneEur keeps wallets and payments safe: Ed25519 and SHA-256, a PIN-encrypted key that never leaves your phone, and authenticated chain holders.">
+<meta property="og:url" content="https://oneeur.com/security.html">
+<meta name="theme-color" content="#0A0805">
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CclipPath id='ic'%3E%3Crect width='1024' height='1024' rx='229'/%3E%3C/clipPath%3E%3ClinearGradient id='ig' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFE08A'/%3E%3Cstop offset='.5' stop-color='%23E7B43C'/%3E%3Cstop offset='1' stop-color='%23A8720F'/%3E%3C/linearGradient%3E%3CradialGradient id='is' cx='90%25' cy='0%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.35'/%3E%3Cstop offset='.7' stop-color='%23fff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg clip-path='url%28%23ic%29'%3E%3Crect width='1024' height='1024' fill='url%28%23ig%29'/%3E%3Crect width='1024' height='1024' fill='url%28%23is%29'/%3E%3Ccircle cx='512' cy='512' r='330' fill='none' stroke='%23fff' stroke-opacity='.18' stroke-width='44'/%3E%3Ccircle cx='512' cy='512' r='272' fill='none' stroke='%231A1300' stroke-opacity='.16' stroke-width='5' stroke-dasharray='30 12'/%3E%3Ccircle cx='512' cy='512' r='232' fill='none' stroke='%23fff' stroke-opacity='.12' stroke-width='4'/%3E%3Cg fill='none' stroke='%231A1300' stroke-opacity='.22' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M284 512H352l24-24h28'/%3E%3Cpath d='M292 584H344l24 24h24'/%3E%3Cpath d='M300 436H356l18-18h20'/%3E%3Cpath d='M740 512H672l-24 24h-28'/%3E%3Cpath d='M732 440H680l-24-24h-24'/%3E%3Cpath d='M724 588H668l-18 18h-20'/%3E%3Cpath d='M560 288v28l20 20v6'/%3E%3Cpath d='M464 736v-28l-20-20v-6'/%3E%3C/g%3E%3Cg fill='%23FFF4CF'%3E%3Ccircle cx='404' cy='488' r='20' fill-opacity='.25'/%3E%3Ccircle cx='404' cy='488' r='10' fill-opacity='.9'/%3E%3Ccircle cx='392' cy='608' r='20' fill-opacity='.25'/%3E%3Ccircle cx='392' cy='608' r='10' fill-opacity='.9'/%3E%3Ccircle cx='394' cy='418' r='20' fill-opacity='.25'/%3E%3Ccircle cx='394' cy='418' r='10' fill-opacity='.9'/%3E%3Ccircle cx='620' cy='536' r='20' fill-opacity='.25'/%3E%3Ccircle cx='620' cy='536' r='10' fill-opacity='.9'/%3E%3Ccircle cx='632' cy='416' r='20' fill-opacity='.25'/%3E%3Ccircle cx='632' cy='416' r='10' fill-opacity='.9'/%3E%3Ccircle cx='630' cy='606' r='20' fill-opacity='.25'/%3E%3Ccircle cx='630' cy='606' r='10' fill-opacity='.9'/%3E%3Ccircle cx='580' cy='342' r='20' fill-opacity='.25'/%3E%3Ccircle cx='580' cy='342' r='10' fill-opacity='.9'/%3E%3Ccircle cx='444' cy='682' r='20' fill-opacity='.25'/%3E%3Ccircle cx='444' cy='682' r='10' fill-opacity='.9'/%3E%3C/g%3E%3Cpath d='M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z' fill='%23fff' fill-opacity='.45' transform='translate%280 5%29'/%3E%3Cpath d='M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z' fill='%231A1300'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="mc"><rect width="1024" height="1024" rx="229"/></clipPath><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset=".5" stop-color="#E7B43C"/><stop offset="1" stop-color="#A8720F"/></linearGradient><radialGradient id="ms" cx="90%" cy="0%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><g clip-path="url(#mc)"><rect width="1024" height="1024" fill="url(#mg)"/><rect width="1024" height="1024" fill="url(#ms)"/><circle cx="512" cy="512" r="330" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="44"/><circle cx="512" cy="512" r="272" fill="none" stroke="#1A1300" stroke-opacity=".16" stroke-width="5" stroke-dasharray="30 12"/><circle cx="512" cy="512" r="232" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="4"/><g fill="none" stroke="#1A1300" stroke-opacity=".22" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M284 512H352l24-24h28"/><path d="M292 584H344l24 24h24"/><path d="M300 436H356l18-18h20"/><path d="M740 512H672l-24 24h-28"/><path d="M732 440H680l-24-24h-24"/><path d="M724 588H668l-18 18h-20"/><path d="M560 288v28l20 20v6"/><path d="M464 736v-28l-20-20v-6"/></g><g fill="#FFF4CF"><circle cx="404" cy="488" r="20" fill-opacity=".25"/><circle cx="404" cy="488" r="10" fill-opacity=".9"/><circle cx="392" cy="608" r="20" fill-opacity=".25"/><circle cx="392" cy="608" r="10" fill-opacity=".9"/><circle cx="394" cy="418" r="20" fill-opacity=".25"/><circle cx="394" cy="418" r="10" fill-opacity=".9"/><circle cx="620" cy="536" r="20" fill-opacity=".25"/><circle cx="620" cy="536" r="10" fill-opacity=".9"/><circle cx="632" cy="416" r="20" fill-opacity=".25"/><circle cx="632" cy="416" r="10" fill-opacity=".9"/><circle cx="630" cy="606" r="20" fill-opacity=".25"/><circle cx="630" cy="606" r="10" fill-opacity=".9"/><circle cx="580" cy="342" r="20" fill-opacity=".25"/><circle cx="580" cy="342" r="10" fill-opacity=".9"/><circle cx="444" cy="682" r="20" fill-opacity=".25"/><circle cx="444" cy="682" r="10" fill-opacity=".9"/></g><path d="M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z" fill="#fff" fill-opacity=".45" transform="translate(0 5)"/><path d="M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z" fill="#1A1300"/></g></svg></span>OneEur.com</a>
+    <nav aria-label="Main">
+      <a href="chain.html">How it works</a>
+      <a href="security.html" aria-current="page">Security</a>
+      <a href="app.html">App</a>
+      <a href="holder.html">Run a holder</a>
+      <a href="https://gateway.oneeur.com/explorer">Explorer</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="goldtop">
+  <section class="pagehero">
+    <div class="wrap">
+      <span class="eyebrow">Security</span>
+      <h1>Your key never leaves your phone.</h1>
+      <p>Every payment is signed on your phone with Ed25519 and checked by every chain holder. The network only ever sees public keys and signatures.</p>
+    </div>
+  </section>
+</div>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Cryptography</span>
+      <h2>Well-known standards, no custom crypto.</h2>
+      <div class="grid two">
+        <article class="card">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></div>
+          <h3>Your key is made on your phone</h3>
+          <p>The app creates a random 32-byte Ed25519 secret on your phone. It is encrypted with a key derived from your 6-digit PIN (scrypt, then XChaCha20-Poly1305) and stored in the phone&rsquo;s Keychain or Keystore. It is never sent anywhere.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/><path d="M16 16l2 2 4-4"/></svg></div>
+          <h3>Your address catches typos</h3>
+          <p>Your address is your public key plus a 4-byte SHA-256 checksum, written in base32 after <code>oe_ed25519_</code>. If a single character is wrong, the checksum fails and the payment is stopped before any money moves.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
+          <h3>Every block is hashed and signed</h3>
+          <p>To pay, the app writes the block&rsquo;s fields in one fixed byte layout and hashes them with SHA-256. That hash is the block&rsquo;s ID. Your phone then signs the hash with your Ed25519 key.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Holders check everything</h3>
+          <p>Each chain holder rebuilds the bytes, hashes them again and checks the signature against the wallet&rsquo;s public key. If any field was changed (amount, receiver, memo), the block is rejected. Holders run these checks again every time they restart.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div>
+          <h3>Hashes link the chains</h3>
+          <p>Each block holds the hash of the block before it, so past blocks can&rsquo;t be changed without breaking every block after them. A receive holds the hash of the send it collects, which links the two chains together.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+          <h3>Not tied to one key type</h3>
+          <p>Every key in a block starts with an algorithm number and its length, and every address names its algorithm (<code>oe_ed25519_</code> today, for example <code>oe_p256_</code> later). The sender and receiver each carry their own algorithm, so wallets with different key types can pay each other.</p>
+        </article>
+      </div>
+      <div class="card pq">
+        <div>
+          <span class="tag gold-tag">Post-quantum ready</span>
+          <h3>Built to switch signatures without starting over</h3>
+          <p>Ed25519 is the only algorithm switched on today. The block format and network were designed so that post-quantum signatures can be added later without a new chain.</p>
+        </div>
+        <ul>
+          <li><strong>Room for big keys.</strong> Key lengths are stored in 2 bytes, so keys up to 65,535 bytes fit. Post-quantum public keys are often over a thousand bytes.</li>
+          <li><strong>Same block format.</strong> A new algorithm only needs a new ID and its key and signature sizes. <code>ONEEUR-BLOCK-V1</code> stays the same, and so do existing chains.</li>
+          <li><strong>No mix-ups.</strong> A wallet is identified by its algorithm and public key together, so the same key bytes under two algorithms always count as two different wallets.</li>
+          <li><strong>Storage is ready.</strong> Holders already name wallet files safely when a post-quantum address is too long for a file name.</li>
+          <li><strong>Safe until switched on.</strong> Holders reject blocks with an algorithm they don&rsquo;t support (<code>unsupported_algorithm</code>), so nothing is accepted before it is ready.</li>
+          <li><strong>Easy to move.</strong> Payments between key types already work, so moving your coins to a post-quantum wallet would be an ordinary payment.</li>
+        </ul>
+      </div>
+      <p style="margin-top:20px;color:var(--soft);font-size:14px">The exact bytes that are hashed and signed are on <a href="chain.html">How it works</a>.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">On your phone</span>
+      <h2>Your key is locked with your PIN.</h2>
+      <div class="withphone">
+      <div class="stack">
+        <article class="card"><h3>Encrypted, then stored in secure storage</h3><p>The wallet&rsquo;s secret is encrypted with a key derived from your 6-digit PIN (scrypt, then XChaCha20-Poly1305). Only the encrypted box is stored, in the iOS Keychain or Android Keystore. Neither the secret nor the PIN is ever sent anywhere.</p></article>
+        <article class="card"><h3>The PIN is asked when it matters</h3><p>You enter your PIN to open the app, after it has been in the background for a minute, and before copying your recovery key, changing the PIN or removing the wallet. After 5 wrong PINs the app makes you wait: 30 seconds, doubling each time, up to an hour.</p></article>
+        <article class="card warn"><h3>Back up your recovery key</h3><p>Your recovery key is the only way to get your wallet back on a new phone. Copy it from Settings and keep it somewhere safe and offline. Anyone who has it can spend your coins, and nobody, including OneEur, can recover it for you.</p></article>
+        <article class="card"><h3>Names stay on your phone</h3><p>Names you give to addresses (&ldquo;Mom&rdquo;, &ldquo;Coffee shop&rdquo;) are kept only on your phone. Chains hold addresses, never names.</p></article>
+      </div>
+        <figure><div class="phone"><img src="img/app-pin.jpg" width="540" height="1200" alt="Choose a PIN screen: six digits that open the wallet and encrypt the secret key on the phone" loading="lazy"></div><figcaption>Your PIN also encrypts your key</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">The network</span>
+      <h2>How chain holders are protected.</h2>
+      <div class="stack">
+        <article class="card"><h3>Holders only connect out</h3><p>A chain holder opens an encrypted WebSocket (<code>wss://</code>) to the network. It needs no open ports, so it can run safely behind a home router.</p></article>
+        <article class="card"><h3>Every holder proves who it is</h3><p>Each holder has its own Ed25519 key. When it connects, it must sign a random challenge, and only holders whose public keys the network operator has added are let in.</p></article>
+        <article class="card"><h3>A small, fixed set of requests</h3><p>A holder only answers a fixed list of requests: take copies of confirmed blocks, report its status, and hand out blocks for syncing. The two sides never run each other&rsquo;s code.</p></article>
+        <article class="card"><h3>Holders check everything themselves</h3><p>Every holder checks each block&rsquo;s signature and the ledger rules on its own, and refuses anything that does not fit, even if it comes from the network.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Be aware</span>
+      <h2>What is not done yet.</h2>
+      <div class="card pq" style="border-top:1px solid var(--hair)">
+        <div>
+          <span class="tag gold-tag">Early network</span>
+          <h3>OneEur is still a young network</h3>
+          <p>We would rather you know the limits than find them. These are the main ones today.</p>
+        </div>
+        <ul>
+          <li><strong>One primary confirms.</strong> The primary decides which of two conflicting blocks wins. It is trusted, and while it is down no new payments can be confirmed. There is no automatic failover yet.</li>
+          <li><strong>No rate limits yet.</strong> There is no spam protection on submitting valid blocks.</li>
+          <li><strong>A PIN is short.</strong> A 6-digit PIN cannot resist offline guessing on its own. The real protection is that the encrypted key never leaves the phone&rsquo;s secure storage. Biometric unlock and a stronger native key derivation are still to come.</li>
+          <li><strong>Memos are public.</strong> A memo is signed and kept forever on both chains and every holder, and anyone can see it in the explorer. Never put private information in it.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Keep reading</span>
+      <h2>More about OneEur.</h2>
+      <div class="pages three">
+        <a href="chain.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div><h3>How the chain works</h3><p>Two blocks per payment, one primary that confirms, full copies on every holder.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+        <a href="app.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h3>Mobile app</h3><p>The OneEur wallet for iOS and Android: send, receive, scan and see your chain.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+        <a href="holder.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6"/><rect x="3" y="14" width="18" height="6"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Run a holder</h3><p>Keep a full copy of every chain on your own machine with one Docker command.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 OneEur.com</span>
+    <nav aria-label="Footer">
+      <a href="chain.html">How it works</a>
+      <a href="security.html">Security</a>
+      <a href="app.html">App</a>
+      <a href="holder.html">Run a holder</a>
+      <a href="https://gateway.oneeur.com/explorer">Explorer</a>
+    </nav>
+    <span>[Short legal or risk notice]</span>
+  </div>
+</footer>
+
+</body>
+</html>

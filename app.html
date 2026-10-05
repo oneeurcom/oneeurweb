@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mobile app — OneEur</title>
+<meta name="description" content="The OneEur wallet for iOS and Android: send and receive in milliseconds, scan QR codes and see your own chain.">
+<meta property="og:title" content="Mobile app — OneEur">
+<meta property="og:description" content="The OneEur wallet for iOS and Android: send and receive in milliseconds, scan QR codes and see your own chain.">
+<meta property="og:url" content="https://oneeur.com/app.html">
+<meta name="theme-color" content="#0A0805">
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CclipPath id='ic'%3E%3Crect width='1024' height='1024' rx='229'/%3E%3C/clipPath%3E%3ClinearGradient id='ig' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFE08A'/%3E%3Cstop offset='.5' stop-color='%23E7B43C'/%3E%3Cstop offset='1' stop-color='%23A8720F'/%3E%3C/linearGradient%3E%3CradialGradient id='is' cx='90%25' cy='0%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.35'/%3E%3Cstop offset='.7' stop-color='%23fff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg clip-path='url%28%23ic%29'%3E%3Crect width='1024' height='1024' fill='url%28%23ig%29'/%3E%3Crect width='1024' height='1024' fill='url%28%23is%29'/%3E%3Ccircle cx='512' cy='512' r='330' fill='none' stroke='%23fff' stroke-opacity='.18' stroke-width='44'/%3E%3Ccircle cx='512' cy='512' r='272' fill='none' stroke='%231A1300' stroke-opacity='.16' stroke-width='5' stroke-dasharray='30 12'/%3E%3Ccircle cx='512' cy='512' r='232' fill='none' stroke='%23fff' stroke-opacity='.12' stroke-width='4'/%3E%3Cg fill='none' stroke='%231A1300' stroke-opacity='.22' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M284 512H352l24-24h28'/%3E%3Cpath d='M292 584H344l24 24h24'/%3E%3Cpath d='M300 436H356l18-18h20'/%3E%3Cpath d='M740 512H672l-24 24h-28'/%3E%3Cpath d='M732 440H680l-24-24h-24'/%3E%3Cpath d='M724 588H668l-18 18h-20'/%3E%3Cpath d='M560 288v28l20 20v6'/%3E%3Cpath d='M464 736v-28l-20-20v-6'/%3E%3C/g%3E%3Cg fill='%23FFF4CF'%3E%3Ccircle cx='404' cy='488' r='20' fill-opacity='.25'/%3E%3Ccircle cx='404' cy='488' r='10' fill-opacity='.9'/%3E%3Ccircle cx='392' cy='608' r='20' fill-opacity='.25'/%3E%3Ccircle cx='392' cy='608' r='10' fill-opacity='.9'/%3E%3Ccircle cx='394' cy='418' r='20' fill-opacity='.25'/%3E%3Ccircle cx='394' cy='418' r='10' fill-opacity='.9'/%3E%3Ccircle cx='620' cy='536' r='20' fill-opacity='.25'/%3E%3Ccircle cx='620' cy='536' r='10' fill-opacity='.9'/%3E%3Ccircle cx='632' cy='416' r='20' fill-opacity='.25'/%3E%3Ccircle cx='632' cy='416' r='10' fill-opacity='.9'/%3E%3Ccircle cx='630' cy='606' r='20' fill-opacity='.25'/%3E%3Ccircle cx='630' cy='606' r='10' fill-opacity='.9'/%3E%3Ccircle cx='580' cy='342' r='20' fill-opacity='.25'/%3E%3Ccircle cx='580' cy='342' r='10' fill-opacity='.9'/%3E%3Ccircle cx='444' cy='682' r='20' fill-opacity='.25'/%3E%3Ccircle cx='444' cy='682' r='10' fill-opacity='.9'/%3E%3C/g%3E%3Cpath d='M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z' fill='%23fff' fill-opacity='.45' transform='translate%280 5%29'/%3E%3Cpath d='M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z' fill='%231A1300'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="mc"><rect width="1024" height="1024" rx="229"/></clipPath><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset=".5" stop-color="#E7B43C"/><stop offset="1" stop-color="#A8720F"/></linearGradient><radialGradient id="ms" cx="90%" cy="0%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><g clip-path="url(#mc)"><rect width="1024" height="1024" fill="url(#mg)"/><rect width="1024" height="1024" fill="url(#ms)"/><circle cx="512" cy="512" r="330" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="44"/><circle cx="512" cy="512" r="272" fill="none" stroke="#1A1300" stroke-opacity=".16" stroke-width="5" stroke-dasharray="30 12"/><circle cx="512" cy="512" r="232" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="4"/><g fill="none" stroke="#1A1300" stroke-opacity=".22" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M284 512H352l24-24h28"/><path d="M292 584H344l24 24h24"/><path d="M300 436H356l18-18h20"/><path d="M740 512H672l-24 24h-28"/><path d="M732 440H680l-24-24h-24"/><path d="M724 588H668l-18 18h-20"/><path d="M560 288v28l20 20v6"/><path d="M464 736v-28l-20-20v-6"/></g><g fill="#FFF4CF"><circle cx="404" cy="488" r="20" fill-opacity=".25"/><circle cx="404" cy="488" r="10" fill-opacity=".9"/><circle cx="392" cy="608" r="20" fill-opacity=".25"/><circle cx="392" cy="608" r="10" fill-opacity=".9"/><circle cx="394" cy="418" r="20" fill-opacity=".25"/><circle cx="394" cy="418" r="10" fill-opacity=".9"/><circle cx="620" cy="536" r="20" fill-opacity=".25"/><circle cx="620" cy="536" r="10" fill-opacity=".9"/><circle cx="632" cy="416" r="20" fill-opacity=".25"/><circle cx="632" cy="416" r="10" fill-opacity=".9"/><circle cx="630" cy="606" r="20" fill-opacity=".25"/><circle cx="630" cy="606" r="10" fill-opacity=".9"/><circle cx="580" cy="342" r="20" fill-opacity=".25"/><circle cx="580" cy="342" r="10" fill-opacity=".9"/><circle cx="444" cy="682" r="20" fill-opacity=".25"/><circle cx="444" cy="682" r="10" fill-opacity=".9"/></g><path d="M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z" fill="#fff" fill-opacity=".45" transform="translate(0 5)"/><path d="M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z" fill="#1A1300"/></g></svg></span>OneEur.com</a>
+    <nav aria-label="Main">
+      <a href="chain.html">How it works</a>
+      <a href="security.html">Security</a>
+      <a href="app.html" aria-current="page">App</a>
+      <a href="holder.html">Run a holder</a>
+      <a href="https://gateway.oneeur.com/explorer">Explorer</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="goldtop">
+  <section class="pagehero">
+    <div class="wrap">
+      <span class="eyebrow">Mobile app</span>
+      <h1>The OneEur wallet.</h1>
+      <p>A simple wallet for iOS and Android. Send and receive OneEur in milliseconds, pay with a QR code, and watch your own chain grow.</p>
+    </div>
+  </section>
+</div>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Screens</span>
+      <h2>See it in action.</h2>
+      <div class="shots">
+        <figure><div class="phone"><img src="img/app-home.jpg" width="540" height="1200" alt="Wallet home screen showing a balance of 140.28 OEUR and recent payments"></div><figcaption>Your balance and latest payments</figcaption></figure>
+        <figure><div class="phone"><img src="img/app-send.jpg" width="540" height="1200" alt="Send screen with 12.50 OEUR to a checked address and the note Coffee and cake"></div><figcaption>Send with an optional public note</figcaption></figure>
+        <figure><div class="phone"><img src="img/app-receive.jpg" width="540" height="1200" alt="Receive screen with a QR code and the wallet address" loading="lazy"></div><figcaption>A QR code anyone can scan to pay you</figcaption></figure>
+        <figure><div class="phone"><img src="img/app-chain.jpg" width="540" height="1200" alt="My chain screen showing 23,997 blocks, Ed25519 and the latest blocks linked together" loading="lazy"></div><figcaption>Your own chain, block by block</figcaption></figure>
+        <figure><div class="phone"><img src="img/app-activity.jpg" width="540" height="1200" alt="Activity screen listing received and sent payments" loading="lazy"></div><figcaption>Every payment in and out</figcaption></figure>
+      </div>
+      <p class="shots-note">Screenshots of the Android app with a test wallet.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Features</span>
+      <h2>Everything a wallet needs, nothing else.</h2>
+      <div class="grid">
+        <article class="card"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></svg></div><h3>Create or restore</h3><p>Create a new wallet in seconds, or restore one you already have with its recovery key. Your key is made on your phone and stays there.</p></article>
+        <article class="card"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Send in milliseconds</h3><p>Enter an address and an amount on the keypad, add a note if you like, and tap Send. The payment is confirmed in milliseconds.</p></article>
+        <article class="card"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg></div><h3>Receive and scan</h3><p>Show a QR code with your address and, if you want, an amount. Scan it in the app or with the phone&rsquo;s own camera to open Send already filled in.</p></article>
+        <article class="card"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/></svg></div><h3>Money just arrives</h3><p>Payments to you are collected automatically, and your balance and activity update live as blocks are confirmed.</p></article>
+        <article class="card"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div><h3>See your own chain</h3><p>My chain shows your wallet&rsquo;s blocks, linked one after another, with the newest glowing gold.</p></article>
+        <article class="card"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div><h3>Names for addresses</h3><p>Give addresses names like &ldquo;Mom&rdquo; or &ldquo;Coffee shop&rdquo;. They are kept only on your phone.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Getting started</span>
+      <h2>Three steps to your first payment.</h2>
+      <ol class="flow">
+        <li class="card"><span class="num">01</span><h3>Get the app</h3><p>Download the OneEur wallet for iOS or Android from [where to get it].</p></li>
+        <li class="card"><span class="num">02</span><h3>Create your wallet</h3><p>Tap Create wallet and choose a 6-digit PIN. Your key is made on the phone and encrypted with the PIN.</p></li>
+        <li class="card"><span class="num">03</span><h3>Back up your recovery key</h3><p>In Settings, tap Copy recovery key and keep it somewhere safe and offline. It is the only way to restore your wallet.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Safe by design</span>
+      <h2>Locked with your PIN.</h2>
+      <div class="stack">
+        <article class="card"><h3>Your key stays on the phone</h3><p>The wallet&rsquo;s secret is encrypted with your PIN and stored in the iOS Keychain or Android Keystore. The app asks for the PIN when it opens, after a minute in the background, and before anything sensitive. <a href="security.html">More about security &rarr;</a></p></article>
+        <article class="card warn"><h3>Removing the app removes the wallet</h3><p>Uninstalling the app or tapping Remove wallet deletes the key from the phone. Make sure your recovery key is backed up first.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Keep reading</span>
+      <h2>More about OneEur.</h2>
+      <div class="pages three">
+        <a href="chain.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div><h3>How the chain works</h3><p>Two blocks per payment, one primary that confirms, full copies on every holder.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+        <a href="security.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Security</h3><p>Ed25519 and SHA-256, a key that stays on your phone, and what is still to do.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+        <a href="holder.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6"/><rect x="3" y="14" width="18" height="6"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Run a holder</h3><p>Keep a full copy of every chain on your own machine with one Docker command.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 OneEur.com</span>
+    <nav aria-label="Footer">
+      <a href="chain.html">How it works</a>
+      <a href="security.html">Security</a>
+      <a href="app.html">App</a>
+      <a href="holder.html">Run a holder</a>
+      <a href="https://gateway.oneeur.com/explorer">Explorer</a>
+    </nav>
+    <span>[Short legal or risk notice]</span>
+  </div>
+</footer>
+
+</body>
+</html>
