@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API — OneEur</title>
+<meta name="description" content="The OneEur API for developers: read balances, chains and payments, sign blocks yourself and submit them, and follow every block live.">
+<meta property="og:title" content="API — OneEur">
+<meta property="og:description" content="The OneEur API for developers: read balances, chains and payments, sign blocks yourself and submit them, and follow every block live.">
+<meta property="og:url" content="https://oneeur.com/api.html">
+<meta name="theme-color" content="#0A0805">
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CclipPath id='ic'%3E%3Crect width='1024' height='1024' rx='229'/%3E%3C/clipPath%3E%3ClinearGradient id='ig' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFE08A'/%3E%3Cstop offset='.5' stop-color='%23E7B43C'/%3E%3Cstop offset='1' stop-color='%23A8720F'/%3E%3C/linearGradient%3E%3CradialGradient id='is' cx='90%25' cy='0%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.35'/%3E%3Cstop offset='.7' stop-color='%23fff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg clip-path='url%28%23ic%29'%3E%3Crect width='1024' height='1024' fill='url%28%23ig%29'/%3E%3Crect width='1024' height='1024' fill='url%28%23is%29'/%3E%3Ccircle cx='512' cy='512' r='330' fill='none' stroke='%23fff' stroke-opacity='.18' stroke-width='44'/%3E%3Ccircle cx='512' cy='512' r='272' fill='none' stroke='%231A1300' stroke-opacity='.16' stroke-width='5' stroke-dasharray='30 12'/%3E%3Ccircle cx='512' cy='512' r='232' fill='none' stroke='%23fff' stroke-opacity='.12' stroke-width='4'/%3E%3Cg fill='none' stroke='%231A1300' stroke-opacity='.22' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M284 512H352l24-24h28'/%3E%3Cpath d='M292 584H344l24 24h24'/%3E%3Cpath d='M300 436H356l18-18h20'/%3E%3Cpath d='M740 512H672l-24 24h-28'/%3E%3Cpath d='M732 440H680l-24-24h-24'/%3E%3Cpath d='M724 588H668l-18 18h-20'/%3E%3Cpath d='M560 288v28l20 20v6'/%3E%3Cpath d='M464 736v-28l-20-20v-6'/%3E%3C/g%3E%3Cg fill='%23FFF4CF'%3E%3Ccircle cx='404' cy='488' r='20' fill-opacity='.25'/%3E%3Ccircle cx='404' cy='488' r='10' fill-opacity='.9'/%3E%3Ccircle cx='392' cy='608' r='20' fill-opacity='.25'/%3E%3Ccircle cx='392' cy='608' r='10' fill-opacity='.9'/%3E%3Ccircle cx='394' cy='418' r='20' fill-opacity='.25'/%3E%3Ccircle cx='394' cy='418' r='10' fill-opacity='.9'/%3E%3Ccircle cx='620' cy='536' r='20' fill-opacity='.25'/%3E%3Ccircle cx='620' cy='536' r='10' fill-opacity='.9'/%3E%3Ccircle cx='632' cy='416' r='20' fill-opacity='.25'/%3E%3Ccircle cx='632' cy='416' r='10' fill-opacity='.9'/%3E%3Ccircle cx='630' cy='606' r='20' fill-opacity='.25'/%3E%3Ccircle cx='630' cy='606' r='10' fill-opacity='.9'/%3E%3Ccircle cx='580' cy='342' r='20' fill-opacity='.25'/%3E%3Ccircle cx='580' cy='342' r='10' fill-opacity='.9'/%3E%3Ccircle cx='444' cy='682' r='20' fill-opacity='.25'/%3E%3Ccircle cx='444' cy='682' r='10' fill-opacity='.9'/%3E%3C/g%3E%3Cpath d='M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z' fill='%23fff' fill-opacity='.45' transform='translate%280 5%29'/%3E%3Cpath d='M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z' fill='%231A1300'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="mc"><rect width="1024" height="1024" rx="229"/></clipPath><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE08A"/><stop offset=".5" stop-color="#E7B43C"/><stop offset="1" stop-color="#A8720F"/></linearGradient><radialGradient id="ms" cx="90%" cy="0%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><g clip-path="url(#mc)"><rect width="1024" height="1024" fill="url(#mg)"/><rect width="1024" height="1024" fill="url(#ms)"/><circle cx="512" cy="512" r="330" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="44"/><circle cx="512" cy="512" r="272" fill="none" stroke="#1A1300" stroke-opacity=".16" stroke-width="5" stroke-dasharray="30 12"/><circle cx="512" cy="512" r="232" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="4"/><g fill="none" stroke="#1A1300" stroke-opacity=".22" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M284 512H352l24-24h28"/><path d="M292 584H344l24 24h24"/><path d="M300 436H356l18-18h20"/><path d="M740 512H672l-24 24h-28"/><path d="M732 440H680l-24-24h-24"/><path d="M724 588H668l-18 18h-20"/><path d="M560 288v28l20 20v6"/><path d="M464 736v-28l-20-20v-6"/></g><g fill="#FFF4CF"><circle cx="404" cy="488" r="20" fill-opacity=".25"/><circle cx="404" cy="488" r="10" fill-opacity=".9"/><circle cx="392" cy="608" r="20" fill-opacity=".25"/><circle cx="392" cy="608" r="10" fill-opacity=".9"/><circle cx="394" cy="418" r="20" fill-opacity=".25"/><circle cx="394" cy="418" r="10" fill-opacity=".9"/><circle cx="620" cy="536" r="20" fill-opacity=".25"/><circle cx="620" cy="536" r="10" fill-opacity=".9"/><circle cx="632" cy="416" r="20" fill-opacity=".25"/><circle cx="632" cy="416" r="10" fill-opacity=".9"/><circle cx="630" cy="606" r="20" fill-opacity=".25"/><circle cx="630" cy="606" r="10" fill-opacity=".9"/><circle cx="580" cy="342" r="20" fill-opacity=".25"/><circle cx="580" cy="342" r="10" fill-opacity=".9"/><circle cx="444" cy="682" r="20" fill-opacity=".25"/><circle cx="444" cy="682" r="10" fill-opacity=".9"/></g><path d="M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z" fill="#fff" fill-opacity=".45" transform="translate(0 5)"/><path d="M490.93 662V403.14l18.92 14.62h-77.4V348.1h138.46V662z" fill="#1A1300"/></g></svg></span>OneEur.com</a>
+    <nav aria-label="Main">
+      <a href="chain.html">How it works</a>
+      <a href="security.html">Security</a>
+      <a href="app.html">Wallet</a>
+      <a href="holder.html">Run a holder</a>
+      <a href="api.html" aria-current="page">API</a>
+      <a href="https://gateway.oneeur.com/explorer">Explorer</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="goldtop">
+  <section class="pagehero">
+    <div class="wrap">
+      <span class="eyebrow">Developers</span>
+      <h1>Build on the OneEur API.</h1>
+      <p>A small JSON API over HTTPS. Read balances, chains and payments, and submit blocks your own code has signed. There are no API keys: every write is a block signed by the wallet itself.</p>
+    </div>
+  </section>
+</div>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Basics</span>
+      <h2>Before you start.</h2>
+      <div class="specs" style="border-top:1px solid var(--hair)">
+        <dl class="card">
+          <div><dt>Base URL</dt><dd><code>https://gateway.oneeur.com</code></dd></div>
+          <div><dt>Format</dt><dd>JSON in and out. Send <code>content-type: application/json</code> on <code>POST</code>. Request bodies are limited to 64 KB.</dd></div>
+          <div><dt>Auth</dt><dd>None. Reads are public. A block is accepted only if the wallet&rsquo;s key signed it, so the API never needs your secret.</dd></div>
+          <div><dt>Amounts</dt><dd>Strings of whole units, so no language loses precision. <code>1 OEUR = 100000000</code> units.</dd></div>
+          <div><dt>Hashes</dt><dd>Lowercase hex: 64 characters for a hash, 128 for a signature.</dd></div>
+          <div><dt>Addresses</dt><dd><code>oe_ed25519_&hellip;</code>: the public key plus a 4-byte checksum, in lowercase base32.</dd></div>
+          <div><dt>Browsers</dt><dd>The API sends no CORS headers, so a web page on another site can&rsquo;t call it from the browser. Call it from a server or a mobile app.</dd></div>
+          <div><dt>Status</dt><dd>Prototype. Endpoints may change, there are no rate limits yet, and test networks may be reset.</dd></div>
+        </dl>
+        <div class="card code">
+          <span class="tag">Try it</span>
+<pre><code>curl https://gateway.oneeur.com/api/overview</code></pre>
+<pre><code>{
+  "genesis": "oe_ed25519_iawd2rvv&hellip;",
+  "total_supply": "600000000000000000000000000",
+  "block_count": 481510,
+  "wallet_count": 23,
+  "pending_total": "82721929340"
+}</code></pre>
+          <p>Every confirmed block is also visible in the explorer.</p>
+          <a class="explore" href="https://gateway.oneeur.com/explorer">Open the explorer <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Endpoints</span>
+      <h2>Wallets and blocks.</h2>
+      <dl class="rows">
+        <div><dt><code>GET /api/accounts/:address</code></dt><dd>A wallet&rsquo;s balance, height and latest block hash (<code>head</code>). Read this before signing the wallet&rsquo;s next block. <code>404</code> if the wallet has no chain yet.<span class="default"><code>{address, balance, height, head}</code></span></dd></div>
+        <div><dt><code>GET /api/accounts/:address/pending</code></dt><dd>Payments sent to the wallet that it hasn&rsquo;t collected yet.<span class="default"><code>{address, pending: [{send_hash, from, amount, memo}]}</code></span></dd></div>
+        <div><dt><code>GET /api/accounts/:address/chain</code></dt><dd>The wallet&rsquo;s own blocks, newest first. <code>limit</code> is 1&ndash;500, default 50.<span class="default"><code>{address, blocks: [block]}</code></span></dd></div>
+        <div><dt><code>GET /api/blocks/:hash</code></dt><dd>One block by its hash.<span class="default"><code>block</code></span></dd></div>
+        <div><dt><code>POST /api/blocks</code></dt><dd>Submit a signed block. Answers once the primary has confirmed it, usually within a few milliseconds.<span class="default"><code>201 {status, hash, confirmations, holders, confirmed_in_us}</code></span></dd></div>
+      </dl>
+
+      <h2 class="sub">Network.</h2>
+      <dl class="rows">
+        <div><dt><code>GET /api/overview</code></dt><dd>Genesis wallet, total supply, block and wallet counts, and the total still pending.<span class="default"><code>{genesis, total_supply, block_count, wallet_count, pending_total}</code></span></dd></div>
+        <div><dt><code>GET /api/wallets</code></dt><dd>Every wallet, richest first. <code>page</code> starts at 1; <code>per_page</code> is 1&ndash;100, default 20.<span class="default"><code>{page, per_page, total, items: [{address, balance, height, head, pending}]}</code></span></dd></div>
+        <div><dt><code>GET /api/transactions</code></dt><dd>Blocks, newest first, each with its <code>amount</code>, <code>counterparty</code> and whether it is still <code>pending</code>. Paged like <code>/api/wallets</code>. Add <code>address=</code> to keep only blocks on that wallet&rsquo;s chain or paying it.<span class="default"><code>{page, per_page, total, items: [block + {amount, counterparty, pending}]}</code></span></dd></div>
+        <div><dt><code>GET /api/activity</code></dt><dd>Sends and receives confirmed per minute over the last 60 minutes, oldest first. <code>minute</code> is a Unix timestamp. Counted since the server last started.<span class="default"><code>{minutes: [{minute, sends, receives}]}</code></span></dd></div>
+        <div><dt><code>GET /api/events</code></dt><dd>A live stream (server-sent events) with one <code>block</code> event per confirmed block. See below.<span class="default"><code>event: block</code> &middot; <code>data: block</code></span></dd></div>
+        <div><dt><code>GET /api/holders</code></dt><dd>The chain holders, whether each is online or catching up, and which is the primary.<span class="default"><code>{primary, holders: [{name, online, loading, catching_up, blocks, bytes, wallets}]}</code></span></dd></div>
+        <div><dt><code>GET /health</code></dt><dd>Answers if the API is up.<span class="default"><code>{"status": "ok"}</code></span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Blocks</span>
+      <h2>The block object.</h2>
+      <div class="specs" style="border-top:1px solid var(--hair)">
+        <dl class="card">
+          <div><dt>type</dt><dd><code>open</code> (a wallet&rsquo;s first block), <code>send</code> or <code>receive</code></dd></div>
+          <div><dt>algorithm</dt><dd>Always <code>"ed25519"</code> today. May be left out on input.</dd></div>
+          <div><dt>account</dt><dd>The address of the wallet whose chain this block is on</dd></div>
+          <div><dt>height</dt><dd>Position in that chain. The first block is 1.</dd></div>
+          <div><dt>previous</dt><dd>Hash of the block before it; zeros for an <code>open</code></dd></div>
+          <div><dt>balance</dt><dd>The wallet&rsquo;s balance <em>after</em> this block, in units</dd></div>
+          <div><dt>link</dt><dd>Send: the receiver&rsquo;s address. Open or receive: the hash of the send it collects.</dd></div>
+          <div><dt>memo</dt><dd>0&ndash;128 bytes of UTF-8, no control characters, <code>""</code> for none. Public and permanent.</dd></div>
+          <div><dt>hash</dt><dd>SHA-256 of the block&rsquo;s bytes</dd></div>
+          <div><dt>signature</dt><dd>Ed25519 signature of <code>hash</code> by the wallet&rsquo;s key</dd></div>
+        </dl>
+        <div class="card code">
+          <span class="tag">Example</span>
+<pre><code>{
+  "type": "send",
+  "algorithm": "ed25519",
+  "account": "oe_ed25519_&hellip;",
+  "height": 2,
+  "previous": "&lt;64 hex&gt;",
+  "balance": "2099999000000000",
+  "link": "oe_ed25519_&hellip;",
+  "memo": "March rent",
+  "hash": "&lt;64 hex&gt;",
+  "signature": "&lt;128 hex&gt;"
+}</code></pre>
+          <p>The block carries no amount. A send&rsquo;s amount is the drop in balance from the block before it; a receive&rsquo;s is the amount of the send it collects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Making a payment</span>
+      <h2>Read, sign, submit.</h2>
+      <ol class="flow">
+        <li class="card"><span class="num">01</span><h3>Read the account</h3><p><code>GET /api/accounts/&lt;sender&gt;</code> gives <code>head</code>, <code>height</code> and <code>balance</code>.</p></li>
+        <li class="card"><span class="num">02</span><h3>Sign a send</h3><p>Build a <code>send</code> with <code>height + 1</code>, <code>previous = head</code>, <code>balance = balance &minus; amount</code> and <code>link</code> = the receiver. Sign it and <code>POST /api/blocks</code>.</p></li>
+        <li class="card"><span class="num">03</span><h3>Collect it</h3><p>The receiver reads <code>/pending</code> and, for each item, signs an <code>open</code> (if the account was <code>404</code>) or a <code>receive</code> with <code>link = send_hash</code> and the same <code>memo</code>.</p></li>
+      </ol>
+      <div class="stack" style="border-top:0">
+        <article class="card"><h3>One block at a time per wallet</h3><p>Each block moves the wallet&rsquo;s head. Re-read the account (or use the <code>hash</code> and <code>balance</code> you just submitted) before building the next block, or the next one is refused as <code>fork</code>.</p></article>
+        <article class="card"><h3>The memo must match</h3><p>An <code>open</code> or <code>receive</code> must repeat the send&rsquo;s memo exactly, so both chains hold the same signed text. Use it for an invoice or order number; anyone can read it.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Signing</span>
+      <h2>Sign blocks in your own code.</h2>
+      <div class="card code bytes" style="border-top:1px solid var(--hair)">
+        <span class="tag">What gets hashed and signed</span>
+<pre><code>"ONEEUR-BLOCK-V1"   15 bytes   format name
+type                 1 byte    1 = open, 2 = send, 3 = receive
+account             key        algorithm (1) + length (2) + public key
+height               8 bytes   unsigned big-endian
+previous            32 bytes   hash of the previous block
+balance             16 bytes   unsigned big-endian, after this block
+link                key / 32   send: receiver &middot; open/receive: the send&rsquo;s hash
+memo length          1 byte    0&ndash;128
+memo                 0&ndash;128     UTF-8 text
+
+key       = 0x00 (Ed25519) + 0x0020 (32) + 32-byte public key
+hash      = SHA-256(bytes above)
+signature = Ed25519(wallet seed, hash)
+address   = "oe_ed25519_" + base32(public key + SHA-256(public key)[0..4])
+            (RFC 4648 alphabet, lowercase, no padding)</code></pre>
+      </div>
+      <div class="card code bytes">
+        <span class="tag">JavaScript &middot; @noble/curves v2</span>
+<pre><code>npm install @noble/curves @noble/hashes</code></pre>
+<pre><code>import { ed25519 } from '@noble/curves/ed25519.js';
+import { sha256 } from '@noble/hashes/sha2.js';
+import { bytesToHex, hexToBytes, randomBytes } from '@noble/hashes/utils.js';
+
+const PREFIX = 'oe_ed25519_';
+const B32 = 'abcdefghijklmnopqrstuvwxyz234567';
+
+function base32(bytes) {
+  let bits = 0, value = 0, out = '';
+  for (const b of bytes) {
+    value = (value &lt;&lt; 8) | b; bits += 8;
+    while (bits &gt;= 5) { out += B32[(value &gt;&gt;&gt; (bits - 5)) &amp; 31]; bits -= 5; }
+  }
+  if (bits &gt; 0) out += B32[(value &lt;&lt; (5 - bits)) &amp; 31];
+  return out;
+}
+
+function unbase32(str) {
+  let bits = 0, value = 0; const out = [];
+  for (const c of str) {
+    const i = B32.indexOf(c);
+    if (i &lt; 0) throw new Error('invalid address');
+    value = (value &lt;&lt; 5) | i; bits += 5;
+    if (bits &gt;= 8) { out.push((value &gt;&gt;&gt; (bits - 8)) &amp; 255); bits -= 8; }
+  }
+  return Uint8Array.from(out);
+}
+
+export function encodeAddress(publicKey) {
+  const check = sha256(publicKey).slice(0, 4);
+  return PREFIX + base32(new Uint8Array([...publicKey, ...check]));
+}
+
+export function decodeAddress(address) {
+  if (!address.startsWith(PREFIX)) throw new Error('invalid address');
+  const raw = unbase32(address.slice(PREFIX.length));
+  const key = raw.slice(0, 32), check = raw.slice(32);
+  const expected = sha256(key).slice(0, 4);
+  if (raw.length !== 36 || check.some((b, i) =&gt; b !== expected[i])) throw new Error('invalid address');
+  return key;
+}
+
+// Keep `seed` secret, e.g. in the device's secure storage.
+export function newWallet(seed = randomBytes(32)) {
+  const publicKey = ed25519.getPublicKey(seed);
+  return { seed, publicKey, address: encodeAddress(publicKey) };
+}
+
+const MAGIC = new TextEncoder().encode('ONEEUR-BLOCK-V1');
+const TYPES = { open: 1, send: 2, receive: 3 };
+
+function uintBE(value, bytes) {
+  const out = new Uint8Array(bytes);
+  let v = BigInt(value);
+  for (let i = bytes - 1; i &gt;= 0; i--) { out[i] = Number(v &amp; 0xffn); v &gt;&gt;= 8n; }
+  return out;
+}
+
+export function memoBytes(memo = '') {
+  const bytes = new TextEncoder().encode(memo);
+  if (bytes.length &gt; 128 || /\p{Cc}/u.test(memo)) throw new Error('bad memo');
+  return bytes;
+}
+
+// algorithm 0 (Ed25519), 2-byte key length, public key
+const key = (publicKey) =&gt; [0, publicKey.length &gt;&gt; 8, publicKey.length &amp; 0xff, ...publicKey];
+
+export function signingPayload(b) {
+  const memo = memoBytes(b.memo);
+  return new Uint8Array([
+    ...MAGIC,
+    TYPES[b.type],
+    ...key(b.account),
+    ...uintBE(b.height, 8),
+    ...b.previous,
+    ...uintBE(b.balance, 16),
+    ...(b.type === 'send' ? key(b.link) : b.link),
+    memo.length,
+    ...memo,
+  ]);
+}
+
+export function signBlock(wallet, b) {
+  const hash = sha256(signingPayload(b));
+  return {
+    type: b.type,
+    algorithm: 'ed25519',
+    account: encodeAddress(b.account),
+    height: b.height,
+    previous: bytesToHex(b.previous),
+    balance: b.balance.toString(),
+    link: b.type === 'send' ? encodeAddress(b.link) : bytesToHex(b.link),
+    memo: b.memo ?? '',
+    hash: bytesToHex(hash),
+    signature: bytesToHex(ed25519.sign(hash, wallet.seed)),
+  };
+}
+
+// account: JSON from GET /api/accounts/:address; amount: bigint units
+export function sendBlock(wallet, account, toAddress, amount, memo = '') {
+  const balance = BigInt(account.balance);
+  if (amount &lt;= 0n || amount &gt; balance) throw new Error('bad amount');
+  return signBlock(wallet, {
+    type: 'send', account: wallet.publicKey, height: account.height + 1,
+    previous: hexToBytes(account.head), balance: balance - amount,
+    link: decodeAddress(toAddress), memo,
+  });
+}
+
+// pending: one item from /pending; account: null if the wallet had a 404
+export function receiveBlock(wallet, account, pending) {
+  const amount = BigInt(pending.amount);
+  const link = hexToBytes(pending.send_hash);
+  const memo = pending.memo ?? '';
+  if (!account) {
+    return signBlock(wallet, {
+      type: 'open', account: wallet.publicKey, height: 1,
+      previous: new Uint8Array(32), balance: amount, link, memo,
+    });
+  }
+  return signBlock(wallet, {
+    type: 'receive', account: wallet.publicKey, height: account.height + 1,
+    previous: hexToBytes(account.head), balance: BigInt(account.balance) + amount, link, memo,
+  });
+}</code></pre>
+      </div>
+      <div class="card code bytes">
+        <span class="tag">Send 1.5 OEUR</span>
+<pre><code>const API = 'https://gateway.oneeur.com';
+
+const account = await (await fetch(`${API}/api/accounts/${me.address}`)).json();
+const block = sendBlock(me, account, 'oe_ed25519_&hellip;', 150_000_000n, 'Invoice 1042');
+
+const res = await fetch(`${API}/api/blocks`, {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify(block),
+});
+console.log(res.status, await res.json());
+// 201 { status: 'confirmed', hash: '&hellip;', confirmations: 1, holders: 3, confirmed_in_us: 1840 }</code></pre>
+        <p>Blocks signed with this code give the same hashes as the backend&rsquo;s own signing code. In another language, rebuild the same bytes and compare your <code>hash</code> with one from <code>/api/transactions</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Live events</span>
+      <h2>Follow every block as it&rsquo;s confirmed.</h2>
+      <div class="stack">
+        <article class="card code">
+          <h3>Server-sent events</h3>
+          <p><code>GET /api/events</code> keeps the connection open and sends one <code>block</code> event per confirmed block, with the block JSON as data. A comment line (<code>: ping</code>) arrives every 15 seconds so idle connections stay open. Events are not replayed: after a reconnect, catch up with <code>/api/transactions</code>.</p>
+<pre><code>curl -N https://gateway.oneeur.com/api/events
+
+retry: 2000
+
+event: block
+data: {"type":"receive","account":"oe_ed25519_&hellip;","height":23920,&hellip;}</code></pre>
+<pre><code>// Node 22+ or any EventSource client
+const events = new EventSource('https://gateway.oneeur.com/api/events');
+events.addEventListener('block', (e) =&gt; {
+  const block = JSON.parse(e.data);
+  if (block.type === 'send' &amp;&amp; block.link === myAddress) {
+    // a payment to you: collect it from /pending
+  }
+});</code></pre>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Errors</span>
+      <h2>What can go wrong.</h2>
+      <dl class="rows">
+        <div><dt><code>400</code></dt><dd>The request is wrong: <code>invalid_address</code>, <code>invalid_hash</code>, <code>invalid_limit</code>, <code>invalid_page</code>, <code>malformed_block</code> or <code>malformed_json</code>.<span class="default"><code>{"error": "&hellip;"}</code></span></dd></div>
+        <div><dt><code>404</code></dt><dd><code>not_found</code>: no such block, a wallet with no chain yet, or an unknown path.<span class="default"><code>{"error": "not_found"}</code></span></dd></div>
+        <div><dt><code>413</code>, <code>415</code></dt><dd><code>request_too_large</code> (over 64 KB) or <code>unsupported_media_type</code> (not JSON).</dd></div>
+        <div><dt><code>422</code></dt><dd>The block was checked and refused. Don&rsquo;t retry it unchanged; see the reasons below.<span class="default"><code>{"status": "rejected", "reason": "&hellip;"}</code></span></dd></div>
+        <div><dt><code>503</code></dt><dd>Try again shortly. <code>primary_unavailable</code>: blocks can&rsquo;t be confirmed right now. <code>loading</code>: a holder is still reading its files after a restart. <code>unavailable</code>: no holder answered a read.</dd></div>
+      </dl>
+
+      <h2 class="sub">Why a block is refused.</h2>
+      <dl class="rows">
+        <div><dt><code>bad_signature</code></dt><dd>The signature doesn&rsquo;t match the block and the wallet&rsquo;s key. Any changed field causes this, so check your byte layout first.</dd></div>
+        <div><dt><code>bad_balance</code></dt><dd>The new balance doesn&rsquo;t add up, or a send is for nothing or more than the wallet has.</dd></div>
+        <div><dt><code>fork</code></dt><dd>Another block already follows the same previous block. This is a double spend, or you built on an old head: re-read the account.</dd></div>
+        <div><dt><code>bad_previous</code>, <code>gap</code></dt><dd>The block doesn&rsquo;t point to the wallet&rsquo;s latest block, or skips a height.</dd></div>
+        <div><dt><code>account_not_open</code></dt><dd>A <code>send</code> or <code>receive</code> on a wallet that has no chain yet. Its first block must be an <code>open</code>.</dd></div>
+        <div><dt><code>unknown_send</code></dt><dd>An open or receive points to a send that doesn&rsquo;t exist or isn&rsquo;t for this wallet.</dd></div>
+        <div><dt><code>already_exists</code></dt><dd>The block was already added, or the send was already collected.</dd></div>
+        <div><dt><code>invalid_memo</code></dt><dd>Over 128 bytes, not UTF-8, or contains control characters.</dd></div>
+        <div><dt><code>memo_mismatch</code></dt><dd>An open or receive whose memo differs from its send&rsquo;s.</dd></div>
+        <div><dt><code>self_send</code></dt><dd>A wallet can&rsquo;t pay itself.</dd></div>
+        <div><dt><code>unsupported_algorithm</code></dt><dd>Anything but <code>ed25519</code>.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Good to know</span>
+      <h2>Limits of the prototype.</h2>
+      <div class="stack">
+        <article class="card"><h3>One primary confirms</h3><p>A <code>201</code> means the primary has added the block (<code>confirmations: 1</code>); copies reach the other holders in the background. The primary is trusted, and while it is down no block can be confirmed. There is no failover yet.</p></article>
+        <article class="card"><h3>Lists can be a moment behind</h3><p>Accounts, pending payments and a wallet&rsquo;s chain come straight from the primary. Overview, wallets, transactions and blocks come from a read copy that is usually less than a millisecond behind. Right after you submit, look up your own wallet through <code>/api/accounts</code>.</p></article>
+        <article class="card"><h3>Be gentle</h3><p>There are no rate limits or spam protection yet. Please don&rsquo;t poll in a tight loop: use <code>/api/events</code> to learn about new blocks.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <span class="eyebrow">Keep reading</span>
+      <h2>More about OneEur.</h2>
+      <div class="pages three">
+        <a href="chain.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div><h3>How the chain works</h3><p>Two blocks per payment, one primary that confirms, full copies on every holder.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+        <a href="security.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Security</h3><p>Ed25519 and SHA-256, a key that stays on your phone, and what is still to do.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+        <a href="holder.html"><div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6"/><rect x="3" y="14" width="18" height="6"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Run a holder</h3><p>Keep a full copy of every chain on your own machine with one Docker command.</p><span class="go">Read more <span aria-hidden="true">&rarr;</span></span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 OneEur.com</span>
+    <nav aria-label="Footer">
+      <a href="chain.html">How it works</a>
+      <a href="security.html">Security</a>
+      <a href="app.html">Wallet</a>
+      <a href="holder.html">Run a holder</a>
+      <a href="api.html">API</a>
+      <a href="https://gateway.oneeur.com/explorer">Explorer</a>
+    </nav>
+    <p class="notice">OneEur (OEUR) is experimental software and a standalone digital token. It is not the euro, is not pegged to or backed by the euro or any other asset, is not e-money or legal tender, and is not issued or endorsed by any central bank or authority. It has no guaranteed value and may become worthless. You alone are responsible for your recovery key; lost keys cannot be recovered. Nothing on this site is financial advice.</p>
+  </div>
+</footer>
+
+</body>
+</html>
