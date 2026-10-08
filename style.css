@@ -31,6 +31,7 @@ p{margin:0}
 .goldtop::after{width:min(72vh,590px);aspect-ratio:1;border:2px solid rgba(255,255,255,.1)}
 .goldtop > *{position:relative}
 .goldtop a:focus-visible,header a:focus-visible{outline-color:var(--on-gold)}
+.hero p a,.hero p a:hover{color:inherit;text-decoration:underline;text-underline-offset:3px}
 
 .mark{width:34px;height:34px;flex:none;display:block;border-radius:22.4%;overflow:hidden;border:1px solid rgba(255,255,255,.7);box-shadow:0 2px 6px rgba(26,19,0,.28)}
 .mark svg{display:block;width:100%;height:100%}
@@ -150,6 +151,8 @@ section.block h2.sub{margin-top:80px}
 .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .grid.two > .card:nth-child(n+3){border-top:1px solid var(--hair)}
 .grid.two > .card:nth-child(odd){border-left:0}
+.grid.six > .card:nth-child(n+4){border-top:1px solid var(--hair)}
+.grid.six > .card:nth-child(3n+1){border-left:0}
 .pq{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;border-top:0}
 .pq h3{font-size:20px;margin:8px 0 10px}
 .pq p{color:var(--muted)}
